@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>تسجيل الدخول</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            color: white;
+            background: linear-gradient(270deg, #00c853, #aeea00);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            direction: rtl;
+        }
+        @keyframes gradientBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+        .container {
+            margin-top: 100px;
+            background-color: rgba(0, 0, 0, 0.4);
+            display: inline-block;
+            padding: 30px;
+            border-radius: 20px;
+        }
+        h2 {
+            margin-bottom: 10px;
+        }
+        input, button {
+            display: block;
+            width: 300px;
+            padding: 10px;
+            margin: 10px auto;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #004d40;
+            color: white;
+            cursor: pointer;
+        }
+        a {
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>بسم الله الرحمن الرحيم</h1>
+        <h2>Welcome to Wagi Company</h2>
+        <form method="POST">
+            <label>اسم المستخدم:</label>
+            <input type="text" name="username" required>
+            <label>كلمة المرور:</label>
+            <input type="password" name="password" required>
+            <button type="submit">دخول</button>
+        </form>
+        <a href="{{ url_for('register') }}">إنشاء حساب جديد</a><br><br>
+        {% if 'admin' not in session %}
+            <form method="POST" action="{{ url_for('login') }}">
+                <input type="hidden" name="username" value="admin">
+                <input type="hidden" name="password" value="admin123">
+                <button type="submit">دخول كمدير</button>
+            </form>
+        {% endif %}
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul>
+              {% for msg in messages %}
+                <li style="color: yellow;">{{ msg }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>

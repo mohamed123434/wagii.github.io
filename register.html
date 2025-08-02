@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>إنشاء حساب</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            color: white;
+            background: linear-gradient(270deg, #00c853, #aeea00);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            direction: rtl;
+        }
+        @keyframes gradientBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+        .container {
+            margin-top: 100px;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            width: 250px;
+        }
+        button {
+            background-color: #004d40;
+            color: white;
+            cursor: pointer;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        a {
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <p>بسم الله الرحمن الرحيم</p>
+            <p>Welcome to Wagi Company</p>
+        </div>
+
+        <h2>إنشاء حساب جديد</h2>
+        <form method="POST">
+            <label>اسم المستخدم:</label><br>
+            <input type="text" name="username" required><br>
+
+            <label>كلمة المرور:</label><br>
+            <input type="password" name="password" required><br>
+
+            <button type="submit">تسجيل</button>
+        </form>
+
+        <p><a href="{{ url_for('login') }}">العودة لتسجيل الدخول</a></p>
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul>
+              {% for msg in messages %}
+                <li style="color: yellow;">{{ msg }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>لوحة التحكم</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            color: white;
+            background: linear-gradient(270deg, #00c853, #aeea00);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            direction: rtl;
+        }
+        @keyframes gradientBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+        .container {
+            margin-top: 50px;
+            padding: 20px;
+        }
+        table {
+            margin: auto;
+            width: 90%;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid white;
+            color: white;
+        }
+        th {
+            background-color: rgba(0, 77, 64, 0.8);
+        }
+        a, button {
+            color: white;
+            text-decoration: none;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #004d40;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <p>بسم الله الرحمن الرحيم</p>
+            <p>Welcome to Wagi Company</p>
+        </div>
+
+        <h2>مرحبًا {{ username }}</h2>
+
+        <a href="{{ url_for('change_password') }}">تغيير كلمة المرور</a>
+        <a href="{{ url_for('logout') }}">تسجيل الخروج</a>
+
+        <h3>بيانات المبيعات</h3>
+        {% if sales_data %}
+        <table>
+            <tr>
+                <th>التاريخ</th>
+                <th>رقم الطلب</th>
+                <th>عنوان التوصيل</th>
+                <th>قيمة التوصيل</th>
+                <th>حالة التوصيل</th>
+                <th>السبب</th>
+                <th>العدد</th>
+            </tr>
+            {% for row in sales_data %}
+            <tr>
+                <td>{{ row['التاريخ'] }}</td>
+                <td>{{ row['رقم الطلب'] }}</td>
+                <td>{{ row['عنوان التوصيل'] }}</td>
+                <td>{{ row['قيمة التوصيل'] }}</td>
+                <td>{{ row['حالة التوصيل'] }}</td>
+                <td>{{ row['السبب'] }}</td>
+                <td>{{ row['العدد'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>لا توجد بيانات مبيعات حالياً.</p>
+        {% endif %}
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul>
+              {% for msg in messages %}
+                <li style="color: yellow;">{{ msg }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>

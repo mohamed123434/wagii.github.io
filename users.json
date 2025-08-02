@@ -1,0 +1,47 @@
+[
+    {
+        "username": "admin",
+        "password": "admin123",
+        "role": "admin"
+    },
+    {
+        "username": "erujm",
+        "password": "scrypt:32768:8:1$rhNoR1Qge009gvI5$25becdf4a70fa...",
+        "role": "company"
+    },
+    {
+        "username": "dns",
+        "password": "1234",
+        "role": "company"
+    },
+    {
+        "username": "خليجk عدن",
+        "password": "scrypt:32768:8:1$6F9dRSHpp4PXm8bn$0c26792e1ff786438b490794c600384515c2c13f3fd9b179f56637ab73ad3accf10bbae095171f77b82e6cb7dc3c6a7eab64ee499c224872d76d390ff53c1351",
+        "role": "company"
+    },
+    {
+        "username": "خليج klعدن",
+        "password": "scrypt:32768:8:1$Q2fPtgfLLPbLZspe$222b185f096e3f2a6ad1358bba416fa9aaef5c8afc45c0e9ca895e0aa55dc2b0febb11069b4f90995afc0b0f23d6902c1f11cda56beaafe9635fe3a486851fe4",
+        "role": "company"
+    },
+    {
+        "username": "خليج عدن",
+        "password": "123",
+        "role": "company"
+    },
+    {
+        "username": "دانيه شرف",
+        "password": "123",
+        "role": "company"
+    },
+    {
+        "username": "دانيه_شرف",
+        "password": "123",
+        "role": "company"
+    },
+    {
+        "username": "خليج_عدن",
+        "password": "123",
+        "role": "company"
+    }
+]
